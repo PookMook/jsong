@@ -22,28 +22,30 @@ concatenation = + 'name: ' + @root.identities[id==@root.search.id].name
 # examples
 
 ```
-categories:[
-  {
-    id:0,
-    name:"foo",
-  },
-  {
-    id:1,
-    name:"bar"
-  }
-],
-items:[
-  {
-    id:0,
-    title:"How to sync all categories",
-    categories:#[@categories['id'===0],@categories[1]],
-    linkedItem:#[@items[1]]
-  },
-  {
-    id:1,
-    title:"I'm a reference",
-    categories:#[@categories[1]]
-    linkedItem:#[@items[0]],
-  }
-]
+{
+  categories:[
+    {
+      id:0,
+      name:"foo",
+    },
+    {
+      id:1,
+      name:"bar"
+    }
+  ],
+  items:[
+    {
+      id:0,
+      title:"How to sync all categories",
+      categories:#[@categories['id'===0],@categories[1]],
+      linkedItem:#[@items[1]]
+    },
+    {
+      id:1,
+      title:"I'm a reference",
+      categories:#[@categories[1]]
+      linkedItem:#[@items[0]],
+    }
+  ]
+}
 ```
