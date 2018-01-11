@@ -8,15 +8,16 @@ multiline with ``
 
 ```
 Non = !
-reference = @path.path['key'==='value'] (@ as the root JSONG element, filter only for iterable), works as value
-atomic = < JSON >
-set = #[]
-map = #{}
-function = (arg1, arg2)(CODE;return arg*3) OR (arg1, arg2)=>(arg1+arg2)
-function to be evaluated = (arg, arg)(CODE;return arg*3)(value, value) works as value
+reference = @path.path['key'==='value'] (@ as the root JSONG element, filter only for iterable), works as value, eg @item[id==3].name
+atomic = < JSON >, eg <{'format':'jsong','coolness':'through the roof!'}>
+data = /ISO8601/, eg /2018-01-11T02:30:09.428Z/
+set = #[], eg #[1,2,3,5,6]
+map = #{}, eg #{"firstKey":"value","secondKey":"association"}
+function = (arg1, arg2)(CODE;return arg*3) OR (arg1, arg2)=>(arg1+arg2), eg (name)=>('hello'+name+', how are you?'), or (name)(return 'hello'+name+', how are you?')
+function to be evaluated = (arg, arg)(CODE;return arg*3)(value, value) works as value, eg (name)(return 'hello'+name+', how are you?')('Arthur')
 promise = #(CODE; resolve 'sucess'; reject 'error';)
 generator = *(arg)(yield arg; return arg+1)
-concatenation = + 'name: ' + @root.identities[id==@root.search.id].name
+concatenation = + , eg 'name: ' + @root.identities[id==@root.search.id].name
 ```
 
 # examples
@@ -38,13 +39,15 @@ concatenation = + 'name: ' + @root.identities[id==@root.search.id].name
       id:0,
       title:"How to sync all categories",
       categories:#[@categories['id'===0],@categories[1]],
-      linkedItem:#[@items[1]]
+      linkedItem:#[@items[1]],
+      created_at: /2018-01-11T02:30:09.428Z/
     },
     {
       id:1,
       title:"I'm a reference",
       categories:#[@categories[1]]
       linkedItem:#[@items[0]],
+      created_at: /2018-01-11T02:40:09.428Z/,
     }
   ]
 }
